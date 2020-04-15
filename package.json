@@ -1,7 +1,7 @@
 {
-  "name": "use-optimistic-changes",
+  "name": "use-optimistic-update",
   "version": "0.0.0",
-  "repository": "git@github.com:karolis-sh/use-optimistic-changes.git",
+  "repository": "git@github.com:karolis-sh/use-optimistic-update.git",
   "license": "MIT",
   "author": "Karolis Šarapnickis <pastas.k@gmail.com>",
   "main": "index.js",
