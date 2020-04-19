@@ -9,7 +9,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "run-p build:*",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs --declaration",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:es": "tsc --module esnext --outDir lib/es",
     "build:types": "tsc --outFile lib/index.d.ts --declaration --emitDeclarationOnly && sh srcipts/types.sh",
     "clean": "rm -rf lib",
