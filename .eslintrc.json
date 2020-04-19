@@ -1,9 +1,21 @@
 {
   "extends": ["@k.sh/eslint-config"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["*.config.js", "docs/**/*.test.js"] }
+    ]
+  },
   "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx"],
-      "extends": ["@k.sh/eslint-config/typescript"]
+      "extends": ["@k.sh/eslint-config/typescript"],
+      "rules": {
+        "react/prop-types": 0
+      }
     }
   ]
 }
