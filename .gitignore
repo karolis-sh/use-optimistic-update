@@ -4,9 +4,7 @@ node_modules
 package-lock.json
 
 # Build products
-/lib
-/.cache
-/dist
+lib
 
 # other
 .vscode

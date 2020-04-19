@@ -2,6 +2,8 @@
 node_modules
 
 # Build products
-/lib
-/.cache
-/dist
+lib
+
+# web
+.cache
+dist

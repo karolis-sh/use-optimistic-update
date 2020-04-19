@@ -7,10 +7,12 @@
 !*.html
 
 # Build products
-/lib
-/.cache
-/dist
+lib
 
 # npm files
 node_modules
 package.json
+
+# web
+.cache
+dist
