@@ -19,7 +19,8 @@
     "lint:js": "eslint .",
     "lint:md": "markdownlint README.md",
     "qa": "yarn lint",
-    "release": "standard-version"
+    "prerelease": "git checkout master && git pull && yarn",
+    "release": "run-s clean build qa && standard-version"
   },
   "husky": {
     "hooks": {
