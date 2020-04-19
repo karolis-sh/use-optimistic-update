@@ -1,10 +1,15 @@
 *.*
 !*.js
+!*.ts
+!*.tsx
 !*.json
 !*.md
+!*.html
 
 # Build products
 /lib
+/.cache
+/dist
 
 # npm files
 node_modules

@@ -5,6 +5,8 @@ package-lock.json
 
 # Build products
 /lib
+/.cache
+/dist
 
 # other
 .vscode
