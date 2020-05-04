@@ -28,7 +28,6 @@ it('should handle single update', async () => {
 
   expect(history).toEqual([
     { isUpdating: false, value: 1 },
-    { isUpdating: false, value: 2 },
     { isUpdating: true, value: 2 },
     { isUpdating: false, value: 1 },
   ]);
@@ -66,7 +65,6 @@ it('should handle consecutive updates', async () => {
 
   expect(history).toEqual([
     { isUpdating: false, value: 1 },
-    { isUpdating: false, value: 2 },
     { isUpdating: true, value: 2 },
     { isUpdating: true, value: 3 },
     { isUpdating: false, value: -1 },
@@ -105,7 +103,6 @@ it('should handle identical updates', async () => {
 
   expect(history).toEqual([
     { isUpdating: false, value: 1 },
-    { isUpdating: false, value: 2 },
     { isUpdating: true, value: 2 },
     { isUpdating: false, value: -999 },
   ]);
