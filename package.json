@@ -22,6 +22,7 @@
     "prerelease": "git checkout master && git pull && yarn",
     "release": "run-s clean build qa && standard-version && git push --follow-tags origin master --no-verify && npm publish",
     "start": "yarn build && yarn build:es --watch",
+    "tdd": "yarn test --watch",
     "test": "jest"
   },
   "husky": {
