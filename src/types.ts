@@ -3,5 +3,5 @@ export type State = {
   value?: StateValue;
 };
 export type StateKey = string | number;
-export type StateValue = string | number;
+export type StateValue = string | number | boolean;
 export type StateUpdater = () => Promise<void>;
