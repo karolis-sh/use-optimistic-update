@@ -8,7 +8,7 @@ type InternalState = State & {
   realValue?: StateValue;
 };
 
-const DEFAULT_STATE: InternalState = { sequence: 0, onUpdate: async () => {} };
+const DEFAULT_STATE: InternalState = { sequence: 0, onUpdate: async () => {}, isUpdating: false };
 
 enum UPDATE {
   INITIATE,
@@ -135,3 +135,5 @@ class Optimist {
 }
 
 export const optimist = new Optimist();
+
+export default Optimist;
