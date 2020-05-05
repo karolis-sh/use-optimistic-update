@@ -8,8 +8,8 @@
 > Improve perceived performance using future prediction
 
 Some actions are predictable and this library provides a set of utilities to
-help you build smooth transitions between async state changes (a.k.a. optimistic
-UI).
+help you build smooth transitions between async state changes (build **Optimistic
+UIs**).
 
 ## Example
 

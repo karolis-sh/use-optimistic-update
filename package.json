@@ -9,6 +9,7 @@
   "repository": "karolis-sh/use-optimistic-update",
   "license": "MIT",
   "author": "Karolis Šarapnickis <pastas.k@gmail.com>",
+  "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/es/index.js",
   "types": "lib/index.d.ts",
