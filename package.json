@@ -1,9 +1,15 @@
 {
   "name": "use-optimistic-update",
   "version": "0.0.1",
+  "description": "Tools to build Optimistic UIs",
+  "keywords": [
+    "react",
+    "optimistic"
+  ],
   "repository": "karolis-sh/use-optimistic-update",
   "license": "MIT",
   "author": "Karolis Šarapnickis <pastas.k@gmail.com>",
+  "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/es/index.js",
   "types": "lib/index.d.ts",
@@ -11,16 +17,19 @@
     "build": "run-p build:*",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:es": "tsc --module esnext --outDir lib/es",
-    "build:types": "tsc --outFile lib/index.d.ts --declaration --emitDeclarationOnly && sh srcipts/types.sh",
+    "build:types": "tsc --outFile lib/index.d.ts --declaration --emitDeclarationOnly && sh scripts/types.sh",
     "clean": "rm -rf lib",
     "fi": "yarn && yarn link && cd web && yarn",
     "format": "prettier --write '**/*.*' && sort-package-json package.json web/package.json",
     "lint": "run-p lint:*",
     "lint:js": "eslint .",
     "lint:md": "markdownlint README.md",
-    "qa": "yarn lint",
+    "qa": "run-p lint test",
     "prerelease": "git checkout master && git pull && yarn",
-    "release": "run-s clean build qa && standard-version"
+    "release": "run-s clean build qa && standard-version && git push --follow-tags origin master --no-verify && npm publish",
+    "start": "yarn build && yarn build:es --watch",
+    "tdd": "yarn test --watch",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -49,18 +58,25 @@
   },
   "devDependencies": {
     "@k.sh/eslint-config": "^1.16.1",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.5",
+    "jest": "^25.5.4",
     "lint-staged": "^10.1.3",
     "markdownlint-cli": "^0.22.0",
     "npm-run-all": "^4.1.5",
     "pretty-quick": "^2.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "sort-package-json": "^1.41.0",
     "standard-version": "^7.1.0",
+    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {

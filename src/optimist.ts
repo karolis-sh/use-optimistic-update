@@ -8,7 +8,7 @@ type InternalState = State & {
   realValue?: StateValue;
 };
 
-const DEFAULT_STATE: InternalState = { sequence: 0, onUpdate: async () => {} };
+const DEFAULT_STATE: InternalState = { sequence: 0, onUpdate: async () => {}, isUpdating: false };
 
 enum UPDATE {
   INITIATE,
@@ -18,8 +18,10 @@ enum UPDATE {
 }
 
 type Action =
-  | { type: UPDATE.INITIATE; payload: { value?: StateValue; onUpdate: StateUpdater } }
-  | { type: UPDATE.START }
+  | {
+      type: UPDATE.INITIATE;
+      payload: { value?: StateValue; onUpdate: StateUpdater; isUpdating: boolean };
+    }
   | { type: UPDATE.FINISH; payload: number }
   | { type: UPDATE.SYNC; payload?: StateValue };
 
@@ -31,11 +33,7 @@ function reducer(state: InternalState = DEFAULT_STATE, action: Action): Internal
         sequence: state.sequence + 1,
         value: action.payload.value,
         onUpdate: action.payload.onUpdate,
-      };
-    case UPDATE.START:
-      return {
-        ...state,
-        isUpdating: true,
+        isUpdating: action.payload.isUpdating,
       };
     case UPDATE.FINISH:
       if (action.payload === state.sequence) {
@@ -90,20 +88,10 @@ class Optimist {
     }
   }
 
-  private isUpdating(key: StateKey): boolean | undefined {
-    return this.getInternalState(key).isUpdating;
-  }
-
-  private isIdentical(key: StateKey): boolean {
-    const { value, realValue } = this.getInternalState(key);
-    return value === realValue;
-  }
-
   private async process(key: StateKey): Promise<void> {
     const { onUpdate, sequence } = this.getInternalState(key);
 
     try {
-      this.dispatch(key, { type: UPDATE.START });
       await onUpdate();
     } finally {
       this.dispatch(key, { type: UPDATE.FINISH, payload: sequence });
@@ -112,10 +100,13 @@ class Optimist {
   }
 
   async update(key: StateKey, onUpdate: StateUpdater, value?: StateValue): Promise<void> {
-    this.dispatch(key, { type: UPDATE.INITIATE, payload: { value, onUpdate } });
-    if (this.isUpdating(key)) return;
-    if (this.isIdentical(key)) return;
-    await this.process(key);
+    const previous = this.getInternalState(key);
+    const shouldUpdate = !previous.isUpdating && previous.value !== value;
+    this.dispatch(key, {
+      type: UPDATE.INITIATE,
+      payload: { value, onUpdate, isUpdating: previous.isUpdating || shouldUpdate },
+    });
+    if (shouldUpdate) await this.process(key);
   }
 
   sync(key: StateKey, value?: StateValue): void {
@@ -135,3 +126,5 @@ class Optimist {
 }
 
 export const optimist = new Optimist();
+
+export default Optimist;
