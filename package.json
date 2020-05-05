@@ -1,6 +1,11 @@
 {
   "name": "use-optimistic-update",
   "version": "0.0.1",
+  "description": "Tools to build Optimistic UIs",
+  "keywords": [
+    "react",
+    "optimistic"
+  ],
   "repository": "karolis-sh/use-optimistic-update",
   "license": "MIT",
   "author": "Karolis Šarapnickis <pastas.k@gmail.com>",
