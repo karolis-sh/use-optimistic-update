@@ -63,25 +63,25 @@ describe('useOptimisticUpdate', () => {
     const button = screen.getByTestId('button');
     expect(button.textContent).toBe('Likes: 0');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 0');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 0');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 1');
+    expect(button.textContent).toBe('Likes: 1');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 1');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 1');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 2');
+    expect(button.textContent).toBe('Likes: 2');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 2');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 2');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 3');
+    expect(button.textContent).toBe('Likes: 3');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 3');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 3');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 3');
+    expect(button.textContent).toBe('Likes: 3');
   });
 
   it('should pre-render optimistic values on OptimisticUpTo3Counter interactions', async () => {
@@ -89,24 +89,60 @@ describe('useOptimisticUpdate', () => {
     const button = screen.getByTestId('button');
     expect(button.textContent).toBe('Likes: 0');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 1');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 1');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 1');
+    expect(button.textContent).toBe('Likes: 1');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 2');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 2');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 2');
+    expect(button.textContent).toBe('Likes: 2');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 3');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 3');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 3');
+    expect(button.textContent).toBe('Likes: 3');
 
-    fireEvent.click(screen.getByTestId('button'));
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 4');
+    fireEvent.click(button);
+    expect(button.textContent).toBe('Likes: 4');
     await act(() => sleep());
-    expect(screen.getByTestId('button').textContent).toBe('Likes: 3');
+    expect(button.textContent).toBe('Likes: 3');
+  });
+
+  const OptimisticCheckbox: React.FC = () => {
+    const [selected, setSelected] = useState(true);
+    const { value, onUpdate } = useOptimisticUpdate('checkbox', selected);
+
+    return (
+      <div>
+        <input
+          data-testid="checkbox"
+          type="checkbox"
+          checked={value as boolean}
+          onChange={(): void => {
+            onUpdate(async () => {
+              setSelected(!value);
+            }, !value);
+          }}
+        />
+        <span data-testid="result">{value ? 'Active' : 'Inactive'}</span>
+      </div>
+    );
+  };
+
+  it('should pre-render initial value', async () => {
+    render(<OptimisticCheckbox />);
+    const checkbox = screen.getByTestId('checkbox');
+    expect(checkbox.getAttribute('checked')).toBe('');
+    expect(screen.getByTestId('result').textContent).toBe('Active');
+
+    fireEvent.click(checkbox);
+
+    // expect(checkbox.getAttribute('checked')).toBeNull(); // TODO: why this doesn't update?
+    expect(screen.getByTestId('result').textContent).toBe('Inactive');
+    await act(() => sleep());
+    // expect(checkbox.getAttribute('checked')).toBeNull(); // TODO: why this doesn't update?
+    expect(screen.getByTestId('result').textContent).toBe('Inactive');
   });
 });

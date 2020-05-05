@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { State, StateUpdater, StateValue, StateKey } from './types';
 import { optimist } from './optimist';
 import useOptimisticState from './useOptimisticState';
@@ -10,9 +8,9 @@ export default (
 ): State & {
   onUpdate: (onUpdate: StateUpdater, value?: StateValue) => Promise<void>;
 } => {
-  const state = useOptimisticState(key);
+  optimist.sync(key, value);
 
-  useEffect(() => optimist.sync(key, value), [key, value]);
+  const state = useOptimisticState(key);
 
   return {
     ...state,
