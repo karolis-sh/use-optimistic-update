@@ -19,6 +19,7 @@
     "build:es": "tsc --module esnext --outDir lib/es",
     "build:types": "tsc --outFile lib/index.d.ts --declaration --emitDeclarationOnly && sh scripts/types.sh",
     "clean": "rm -rf lib",
+    "commit": "npx git-cz",
     "fi": "yarn && yarn link && cd web && yarn",
     "format": "prettier --write '**/*.*' && sort-package-json package.json web/package.json",
     "lint": "run-p lint:*",
