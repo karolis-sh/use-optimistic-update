@@ -44,3 +44,31 @@ it('should update', async () => {
   expect(result.current.value).toBe(2);
   expect(result.current.isUpdating).toBe(false);
 });
+
+it('should update with changed key', async () => {
+  let key = 'test-2';
+  let initialValue = 1;
+
+  const { result, rerender } = renderHook(() => useOptimisticUpdate(key, initialValue));
+
+  expect(result.current.value).toBe(1);
+  expect(result.current.isUpdating).toBeFalsy();
+
+  await act(() =>
+    result.current.onUpdate(async () => {
+      await sleep();
+      initialValue += 1;
+    }, (result.current.value as number) + 1)
+  );
+
+  key = 'test-2-b';
+  initialValue = 1;
+
+  expect(result.current.value).toBe(2);
+  expect(result.current.isUpdating).toBe(false);
+
+  rerender();
+
+  expect(result.current.value).toBe(1);
+  expect(result.current.isUpdating).toBeFalsy();
+});
