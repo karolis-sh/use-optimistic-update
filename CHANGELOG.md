@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/karolis-sh/use-optimistic-update/compare/v0.0.2...v0.0.3) (2020-05-06)
+
+### Features
+
+- memoize useOptimisticUpdate's onUpdate instance ([282756e](https://github.com/karolis-sh/use-optimistic-update/commit/282756efdbcfac61429a51f58ec3950f00790832))
+
 ### [0.0.2](https://github.com/karolis-sh/use-optimistic-update/compare/v0.0.1...v0.0.2) (2020-05-05)
 
 ### Bug Fixes
