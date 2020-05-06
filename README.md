@@ -1,6 +1,7 @@
 # use-optimistic-update
 
 [![npm version][version-badge]][version]
+[![gzip size][size-badge]][size]
 ![Node.js CI](https://github.com/karolis-sh/use-optimistic-update/workflows/Node.js%20CI/badge.svg)
 [![License: MIT][license-badge]][license]
 [![code style: prettier][code-style-badge]][code-style]
@@ -275,6 +276,8 @@ MIT
 
 [version-badge]: https://badge.fury.io/js/use-optimistic-update.svg
 [version]: https://www.npmjs.com/package/use-optimistic-update
+[size-badge]: https://img.shields.io/bundlephobia/minzip/use-optimistic-update?label=gzip
+[size]: https://bundlephobia.com/result?p=use-optimistic-update
 [license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license]: https://opensource.org/licenses/MIT
 [code-style-badge]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
