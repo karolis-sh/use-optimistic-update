@@ -6,11 +6,10 @@
 [![License: MIT][license-badge]][license]
 [![code style: prettier][code-style-badge]][code-style]
 
-> Improve perceived performance using future prediction
+> Improve perceived performance by predicting the future outcome
 
-Some actions are predictable and this library provides a set of utilities to
-help you build smooth transitions between async state changes (build **Optimistic
-UIs**).
+A set of utilities to achieve **Optimistic UI** effect. Helps to bridge the gap
+between async state changes.
 
 ## Example
 
@@ -78,7 +77,7 @@ or
 ```jsx
 import { useOptimisticUpdate } from 'use-optimistic-update';
 
-const { value, isUpdating, onUpdate } = useOptimisticUpdate(stateKey, realValue);
+const { value, onUpdate, isUpdating } = useOptimisticUpdate(stateKey, realValue);
 ```
 
 Options
@@ -91,10 +90,8 @@ Options
 Returns
 
 - `value: string | number | boolean | undefined`
-  - The optimistic value
-- `isUpdating: boolean`
 
-  - Indication whether an `onUpdate` is in progress somewhere in the app
+  - The optimistic value
 
 - ```ts
   onUpdate: (
@@ -103,12 +100,16 @@ Returns
   ) => Promise<void>
   ```
 
-  - Updater function that should be called you want to perform optimistic update
+  - Updater function that should be called when you want to update **real** and **optimistic**
+    values
   - `updater`
-    - Async function that should change the **real** value
+    - Async function that should perform the **real** value change
     - While this function is executing the optimistic value is perceived
   - `newValue`
     - The new **optimistic** value
+
+- `isUpdating: boolean`
+  - Is an update being performed for given `stateKey`
 
 #### Using `onUpdate` function
 
@@ -142,15 +143,15 @@ Options
 
 Returns
 
-- `value?: string | number | boolean`
+- `value: string | number | boolean | undefined`
   - The optimistic value
 - `isUpdating: boolean`
-  - Indication whether an `onUpdate` is in progress somewhere in the app
+  - Is an update being performed for given `stateKey`
 
 ### `optimist`
 
 `optimist` is the underlying event emitter used by the hooks. It is responsible
-for updating and syncing optimistic / real values.
+for updating / syncing of optimistic / real values.
 
 #### `optimist.sync`
 
@@ -168,14 +169,6 @@ Options
   - **Required**
 - `realValue: string | number | boolean | undefined`
   - **Required**
-
-##### Using `optimist.sync`
-
-```jsx
-import { optimist } from 'use-optimistic-update';
-
-optimist.sync('count3r', counter);
-```
 
 #### `optimist.update`
 
@@ -227,10 +220,10 @@ Options
 
 Returns
 
-- `value?: string | number | boolean`
+- `value: string | number | boolean | undefined`
   - The optimistic value
 - `isUpdating: boolean`
-  - Indication whether an `onUpdate` is in progress somewhere in the app
+  - Is an update being performed for given `stateKey`
 
 #### `optimist.onUpdate`
 
@@ -250,18 +243,32 @@ Options
 
 - ```ts
   listener: ({
+    value: string | number | boolean | undefined;
     isUpdating: boolean;
-    value?: StateValue;
   }) => void
   ```
 
   - **Required**
-  - A function that will be called every time the optimistic state changes
+  - The function that will be called every time the optimistic state changes
 
 Returns
 
 - `unbind: () => void`
   - A function to remove the event listener
+
+##### Using `optimist.onUpdate`
+
+```js
+import { useEffect } from 'react';
+import { optimist } from 'use-optimistic-update';
+
+useEffect(() => {
+  const unbind = optimist.onUpdate('count3r', ({ value, isUpdating }) => {
+    console.log('count3r changes:', value, isUpdating);
+  });
+  return unbind;
+}, []);
+```
 
 ## FAQ
 
