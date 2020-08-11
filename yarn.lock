@@ -4685,10 +4685,10 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-nanoevents@^5.1.5:
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/nanoevents/-/nanoevents-5.1.5.tgz#ad9854a531c4240296f21e8362c9e51f9ebde528"
-  integrity sha512-4uRsi3eXxPLQfiXSWPstkS2opiYqRP7mkqh2KDWr24/IwJnqdCLL41ljl86rYW6LxN0w6B6PlwoClAH8o17hBQ==
+nanoevents@^5.1.8:
+  version "5.1.8"
+  resolved "https://registry.yarnpkg.com/nanoevents/-/nanoevents-5.1.8.tgz#3a192513ca3dc88421a3b60cb22ca802074aacfb"
+  integrity sha512-hxhbaIUYJxJIGFJLB6ls3byky/qWCYWyOY3eMYMyic736S14eW63V8B4fwdNfd97EKhg9346xbEKUYsb+44Hqg==
 
 nanomatch@^1.2.9:
   version "1.2.13"

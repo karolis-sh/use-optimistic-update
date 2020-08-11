@@ -55,7 +55,7 @@
     }
   },
   "dependencies": {
-    "nanoevents": "^5.1.5"
+    "nanoevents": "^5.1.8"
   },
   "devDependencies": {
     "@k.sh/eslint-config": "^1.16.1",
