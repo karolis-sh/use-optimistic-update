@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/karolis-sh/use-optimistic-update/compare/v0.0.3...v0.0.4) (2020-08-11)
+
+
+### Bug Fixes
+
+* **dependency:** upgrade to nanoevents@5.1.8 ([d15de1b](https://github.com/karolis-sh/use-optimistic-update/commit/d15de1b1aa6e31b51d4fe83397501583adac5061))
+
 ### [0.0.3](https://github.com/karolis-sh/use-optimistic-update/compare/v0.0.2...v0.0.3) (2020-05-06)
 
 ### Features

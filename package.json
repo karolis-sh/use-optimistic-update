@@ -1,6 +1,6 @@
 {
   "name": "use-optimistic-update",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tools to build Optimistic UIs",
   "keywords": [
     "react",
