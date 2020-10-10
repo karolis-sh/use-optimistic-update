@@ -27,6 +27,7 @@
     "lint": "run-p lint:*",
     "lint:js": "eslint .",
     "lint:md": "markdownlint *.md -i node_modules -i CHANGELOG.md",
+    "lint:types": "tsc --noEmit",
     "qa": "run-p lint test",
     "prerelease": "git checkout master && git pull && yarn",
     "release": "run-s clean build qa && standard-version && git push --follow-tags origin master --no-verify && npm publish",
