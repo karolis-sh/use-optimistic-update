@@ -79,7 +79,7 @@
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "sort-package-json": "^1.46.0",
-    "standard-version": "^8.0.1",
+    "standard-version": "^9.0.0",
     "ts-jest": "^26.4.1",
     "typescript": "^3.8.3"
   },
