@@ -21,10 +21,13 @@
     "clean": "rm -rf lib",
     "commit": "npx git-cz",
     "fi": "yarn && yarn link && cd web && yarn",
-    "format": "prettier --write '**/*.*' && sort-package-json package.json web/package.json",
+    "format": "run-p format:*",
+    "format:package.json": "sort-package-json package.json",
+    "format:prettier": "prettier --write '**/*.*'",
     "lint": "run-p lint:*",
     "lint:js": "eslint .",
-    "lint:md": "markdownlint README.md",
+    "lint:md": "markdownlint *.md -i node_modules -i CHANGELOG.md",
+    "lint:types": "tsc --noEmit",
     "qa": "run-p lint test",
     "prerelease": "git checkout master && git pull && yarn",
     "release": "run-s clean build qa && standard-version && git push --follow-tags origin master --no-verify && npm publish",
@@ -39,14 +42,14 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "**/package.json": [
+      "sort-package-json"
+    ],
+    "*.{js,ts,tsx}": [
       "eslint --fix"
     ],
-    "*.{md,json}": [
+    "*.{json,md,html,yml}": [
       "pretty-quick --staged"
-    ],
-    "package.json": [
-      "sort-package-json"
     ]
   },
   "config": {
@@ -58,27 +61,27 @@
     "nanoevents": "^5.1.8"
   },
   "devDependencies": {
-    "@k.sh/eslint-config": "^1.16.1",
-    "@testing-library/jest-dom": "^5.5.0",
-    "@testing-library/react": "^10.0.4",
-    "@testing-library/react-hooks": "^3.2.1",
-    "@types/jest": "^25.2.1",
+    "@k.sh/eslint-config": "^1.18.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.2",
+    "@types/jest": "^26.0.14",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
-    "cz-conventional-changelog": "^3.1.0",
-    "husky": "^4.2.5",
-    "jest": "^25.5.4",
-    "lint-staged": "^10.1.3",
-    "markdownlint-cli": "^0.22.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.0",
+    "jest": "^26.5.2",
+    "lint-staged": "^10.4.0",
+    "markdownlint-cli": "^0.24.0",
     "npm-run-all": "^4.1.5",
-    "pretty-quick": "^2.0.1",
+    "pretty-quick": "^3.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
-    "sort-package-json": "^1.41.0",
-    "standard-version": "^8.0.1",
-    "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3"
+    "sort-package-json": "^1.46.0",
+    "standard-version": "^9.0.0",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
   },
   "peerDependencies": {
     "react": "^16.8.0"

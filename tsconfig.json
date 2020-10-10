@@ -1,4 +1,5 @@
 {
+  "extends": "@k.sh/eslint-config/typescript/config.json",
   "compilerOptions": {
     "target": "es2018",
     "jsx": "react",
@@ -6,11 +7,9 @@
     "moduleResolution": "node",
     "declaration": false,
     "sourceMap": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "strictNullChecks": true,
     "removeComments": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx", "web"]

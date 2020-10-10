@@ -1,18 +1,20 @@
-*.*
+*
+!*/
 !*.js
 !*.ts
 !*.tsx
 !*.json
 !*.md
 !*.html
-
-# Build products
-lib
-CHANGELOG.md
+!*.yml
 
 # npm files
 node_modules
 package.json
+
+# project
+lib
+CHANGELOG.md
 
 # web
 .cache
