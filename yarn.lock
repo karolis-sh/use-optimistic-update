@@ -559,10 +559,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@k.sh/eslint-config@^1.18.0":
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/@k.sh/eslint-config/-/eslint-config-1.18.0.tgz#50f3f3ae32be70569e26febc636dd9b38342083c"
-  integrity sha512-p+i/YlqlsH0nk8BM4ey86K1lAhnaq6KBVbLE4aW+4AE2wlFV7+SF3NvcTxbmOZlN1sPhBQa2DDwlqXFu8ujYZQ==
+"@k.sh/eslint-config@^1.18.1":
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/@k.sh/eslint-config/-/eslint-config-1.18.1.tgz#f68102530f63130b166fe1218d988cdc45095c4b"
+  integrity sha512-7hGR7qBd2F0lRp7wc3sxUghIh96qSUP9CUgh7n8lOCaTdPd6KxcZUEdPFpRh3zqAY01X22alBrjyOR3KxDUhtQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.19.0"
     eslint "^6.8.0"
@@ -818,7 +818,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-dom@^16.9.8":
+"@types/react-dom@^16.9.6":
   version "16.9.8"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
   integrity sha512-ykkPQ+5nFknnlU6lDd947WbQ6TE3NNzbQAkInC2EKY1qeYdTKp7onFusmYZb+ityzx2YviqT6BXSu+LyWWJwcA==
@@ -840,7 +840,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@^16.9.51":
+"@types/react@^16.9.34":
   version "16.9.51"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.51.tgz#f8aa51ffa9996f1387f63686696d9b59713d2b60"
   integrity sha512-lQa12IyO+DMlnSZ3+AGHRUiUcpK47aakMMoBG8f7HGxJT8Yfe+WE128HIXaHOHVPReAW0oDS3KAI0JI2DDe1PQ==
