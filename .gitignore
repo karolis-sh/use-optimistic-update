@@ -3,10 +3,6 @@ node_modules
 *.log*
 package-lock.json
 
-# other
-.vscode
-*.*~
-
 # project
 lib
 
