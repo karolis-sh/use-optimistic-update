@@ -1,3 +1,3 @@
 [build]
   publish = "web/dist/"
-  command = "yarn build && yarn link && cd web && yarn && yarn build"
+  command = "yarn setup && yarn build && yarn build-web"
