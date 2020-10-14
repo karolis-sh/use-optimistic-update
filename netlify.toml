@@ -1,0 +1,3 @@
+[build]
+  publish = "web/dist/"
+  command = "yarn setup && yarn build && yarn build-web"
