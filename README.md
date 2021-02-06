@@ -39,7 +39,8 @@ Converting async counter to optimistic component that reacts to user actions ins
 +         onUpdate(() => increment(newValue), newValue);
         }}
       >
-        Likes: {counter}
+-       Likes: {counter}
++       Likes: {value}
       </button>
     );
   }
