@@ -28,6 +28,7 @@
     "lint:js": "eslint .",
     "lint:md": "markdownlint-cli2 '**/*.md' '!node_modules' '!**/node_modules' '!**/CHANGELOG.md'",
     "lint:types": "tsc --noEmit",
+    "prepare": "husky install",
     "qa": "run-p lint test",
     "release": "yarn && run-s clean build qa && standard-version --no-verify && git push --follow-tags --no-verify && npm publish",
     "setup": "yarn link && cd web && yarn",
@@ -35,22 +36,9 @@
     "tdd": "yarn test --watch",
     "test": "jest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run qa"
-    }
-  },
   "lint-staged": {
-    "**/package.json": [
-      "sort-package-json"
-    ],
-    "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.{json,md,html,yml}": [
-      "pretty-quick --staged"
-    ]
+    "**/package.json": "sort-package-json",
+    "*.{js,ts,tsx}": "eslint --fix"
   },
   "config": {
     "commitizen": {
@@ -69,7 +57,7 @@
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.6",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^4.3.0",
+    "husky": "^7.0.0",
     "jest": "^26.5.3",
     "lint-staged": "^10.4.0",
     "markdownlint-cli2": "^0.0.10",
