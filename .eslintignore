@@ -1,9 +1,0 @@
-# npm files
-node_modules
-
-# project
-lib
-
-# web
-.cache
-dist
