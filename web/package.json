@@ -6,8 +6,8 @@
   "scripts": {
     "build": "parcel build index.html",
     "clean": "rm -rf dist .cache",
-    "postinstall": "yarn link use-optimistic-update",
-    "start": "parcel index.html",
+    "postinstall": "cd .. && yarn link && cd - && yarn link use-optimistic-update",
+    "dev": "parcel index.html",
     "try": "run-s clean build && serve dist"
   },
   "dependencies": {

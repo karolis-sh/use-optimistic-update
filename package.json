@@ -31,7 +31,7 @@
     "prepare": "husky install",
     "qa": "run-p lint test",
     "release": "yarn && run-s clean build qa && standard-version --no-verify && git push --follow-tags --no-verify && npm publish",
-    "setup": "yarn link && cd web && yarn",
+    "setup": "cd web && yarn",
     "start": "yarn build && yarn build:es --watch",
     "tdd": "yarn test --watch",
     "test": "jest"
