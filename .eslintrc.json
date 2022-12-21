@@ -1,21 +1,6 @@
 {
-  "extends": ["@k.sh/eslint-config"],
-  "env": {
-    "browser": true
-  },
-  "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": ["*.config.js", "docs/**/*.test.js"] }
-    ]
-  },
-  "overrides": [
-    {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "extends": ["@k.sh/eslint-config/typescript"],
-      "rules": {
-        "react/prop-types": 0
-      }
-    }
-  ]
+  "extends": ["plugin:@k.sh/typescript", "plugin:@k.sh/react", "plugin:@k.sh/prettier"],
+  "parserOptions": {
+    "project": ["./tsconfig.eslint.json", "./web/tsconfig.json"]
+  }
 }

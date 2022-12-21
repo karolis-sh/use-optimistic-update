@@ -8,6 +8,7 @@ type InternalState = State & {
   realValue?: StateValue;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const DEFAULT_STATE: InternalState = { sequence: 0, onUpdate: async () => {}, isUpdating: false };
 
 enum UPDATE {
