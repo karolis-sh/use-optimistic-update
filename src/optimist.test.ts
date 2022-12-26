@@ -1,7 +1,8 @@
 import Optimist from './optimist';
 import { State } from './types';
 
-const delay = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 5));
+const delay = (): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, 5));
 
 it('should handle single update', async () => {
   const optimist = new Optimist();

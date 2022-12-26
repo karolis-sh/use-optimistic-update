@@ -1,6 +1,18 @@
 {
-  "extends": ["plugin:@k.sh/typescript", "plugin:@k.sh/react", "plugin:@k.sh/prettier"],
-  "parserOptions": {
-    "project": ["./tsconfig.eslint.json", "./web/tsconfig.json"]
-  }
+  "extends": [
+    "plugin:@k.sh/typescript",
+    "plugin:@k.sh/react",
+    "plugin:@k.sh/jest",
+    "plugin:@k.sh/prettier"
+  ],
+  "overrides": [
+    {
+      "files": ["./*.js", "./.*.js"],
+      "extends": [
+        "plugin:@k.sh/esnext",
+        "plugin:@k.sh/node",
+        "plugin:@k.sh/prettier"
+      ]
+    }
+  ]
 }

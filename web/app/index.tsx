@@ -3,7 +3,8 @@ import * as React from 'react';
 import Cards, { CardsContext } from './Cards';
 import Changes from './Changes';
 
-const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 const App: React.FC = () => {
   const [selected, setSelected] = React.useState(1);

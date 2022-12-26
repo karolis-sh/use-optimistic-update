@@ -8,8 +8,12 @@ type InternalState = State & {
   realValue?: StateValue;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const DEFAULT_STATE: InternalState = { sequence: 0, onUpdate: async () => {}, isUpdating: false };
+const DEFAULT_STATE: InternalState = {
+  sequence: 0,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onUpdate: async () => {},
+  isUpdating: false,
+};
 
 enum UPDATE {
   INITIATE,
@@ -21,12 +25,19 @@ enum UPDATE {
 type Action =
   | {
       type: UPDATE.INITIATE;
-      payload: { value?: StateValue; onUpdate: StateUpdater; isUpdating: boolean };
+      payload: {
+        value?: StateValue;
+        onUpdate: StateUpdater;
+        isUpdating: boolean;
+      };
     }
   | { type: UPDATE.FINISH; payload: number }
   | { type: UPDATE.SYNC; payload?: StateValue };
 
-function reducer(state: InternalState = DEFAULT_STATE, action: Action): InternalState {
+function reducer(
+  state: InternalState = DEFAULT_STATE,
+  action: Action,
+): InternalState {
   switch (action.type) {
     case UPDATE.INITIATE:
       return {
@@ -83,7 +94,10 @@ class Optimist {
 
     const previous = this.emissions[key];
     const current = this.getState(key);
-    if (previous?.isUpdating !== current.isUpdating || previous?.value !== current.value) {
+    if (
+      previous?.isUpdating !== current.isUpdating ||
+      previous?.value !== current.value
+    ) {
       this.emissions[key] = current;
       this.emitter.emit('update', key);
     }
@@ -96,16 +110,25 @@ class Optimist {
       await onUpdate();
     } finally {
       this.dispatch(key, { type: UPDATE.FINISH, payload: sequence });
-      if (sequence !== this.getInternalState(key).sequence) await this.process(key);
+      if (sequence !== this.getInternalState(key).sequence)
+        await this.process(key);
     }
   }
 
-  async update(key: StateKey, onUpdate: StateUpdater, value?: StateValue): Promise<void> {
+  async update(
+    key: StateKey,
+    onUpdate: StateUpdater,
+    value?: StateValue,
+  ): Promise<void> {
     const previous = this.getInternalState(key);
     const shouldUpdate = !previous.isUpdating && previous.value !== value;
     this.dispatch(key, {
       type: UPDATE.INITIATE,
-      payload: { value, onUpdate, isUpdating: previous.isUpdating || shouldUpdate },
+      payload: {
+        value,
+        onUpdate,
+        isUpdating: previous.isUpdating || shouldUpdate,
+      },
     });
     if (shouldUpdate) await this.process(key);
   }

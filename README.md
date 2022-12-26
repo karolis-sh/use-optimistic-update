@@ -86,7 +86,10 @@ or
 ```jsx
 import { useOptimisticUpdate } from 'use-optimistic-update';
 
-const { value, onUpdate, isUpdating } = useOptimisticUpdate(stateKey, realValue);
+const { value, onUpdate, isUpdating } = useOptimisticUpdate(
+  stateKey,
+  realValue,
+);
 ```
 
 Options
@@ -105,8 +108,10 @@ Returns
 <!-- markdownlint-disable line-length -->
 
 - ```ts
-  onUpdate: (updater: () => Promise<void>, newValue: string | number | boolean | undefined) =>
-    Promise<void>;
+  onUpdate: (
+    updater: () => Promise<void>,
+    newValue: string | number | boolean | undefined,
+  ) => Promise<void>;
   ```
 
   <!-- markdownlint-enable line-length -->
@@ -210,7 +215,7 @@ optimist.update(
   async () => {
     await incrementCounter();
   },
-  counter + 1
+  counter + 1,
 );
 ```
 
