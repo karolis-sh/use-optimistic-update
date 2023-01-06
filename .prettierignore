@@ -7,6 +7,8 @@
 !*.md
 !*.html
 !*.yml
+!*.sh
+!*.gitignore
 
 # npm files
 node_modules
@@ -15,6 +17,7 @@ package.json
 # project
 lib
 CHANGELOG.md
+.husky/_/
 
 # web
 .cache

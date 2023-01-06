@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
+import React, { useState } from 'react';
 
 import { useOptimisticUpdate } from '.';
 
 const DELAY = 5;
 
-const sleep = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, DELAY + 5));
+const sleep = (): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, DELAY + 5));
 
 describe('useOptimisticUpdate', () => {
   const AsyncUpTo3Counter: React.FC = () => {
@@ -34,7 +35,10 @@ describe('useOptimisticUpdate', () => {
 
   const OptimisticUpTo3Counter: React.FC = () => {
     const [counter, setCounter] = useState(0);
-    const { value: optimisticCounter, onUpdate } = useOptimisticUpdate('UpTo3Counter', counter);
+    const { value: optimisticCounter, onUpdate } = useOptimisticUpdate(
+      'UpTo3Counter',
+      counter,
+    );
 
     const increment = (newValue: number): Promise<void> =>
       new Promise((resolve) => {

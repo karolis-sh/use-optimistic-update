@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 
-import { State, StateUpdater, StateValue, StateKey } from './types';
 import { optimist } from './optimist';
+import { State, StateUpdater, StateValue, StateKey } from './types';
 import useOptimisticState from './useOptimisticState';
 
 export default (
   key: StateKey,
-  value?: StateValue
+  value?: StateValue,
 ): State & {
   onUpdate: (onUpdate: StateUpdater, value?: StateValue) => Promise<void>;
 } => {
@@ -17,7 +17,7 @@ export default (
   const onUpdate = useCallback(
     (updater: StateUpdater, newValue?: StateValue): Promise<void> =>
       optimist.update(key, updater, newValue),
-    [key]
+    [key],
   );
 
   return { ...state, onUpdate };

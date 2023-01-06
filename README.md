@@ -63,13 +63,21 @@ or
 
 ## API
 
-- [useOptimisticUpdate](#useoptimisticupdate)
-- [useOptimisticState](#useoptimisticstate)
-- [optimist](#optimist)
-  - [optimist.sync](#optimistsync)
-  - [optimist.update](#optimistupdate)
-  - [optimist.getState](#optimistgetstate)
-  - [optimist.onUpdate](#optimistonupdate)
+- [use-optimistic-update](#use-optimistic-update)
+  - [Example](#example)
+  - [Installation](#installation)
+  - [Features](#features)
+  - [API](#api)
+    - [`useOptimisticUpdate`](#useoptimisticupdate)
+    - [`useOptimisticState`](#useoptimisticstate)
+    - [`optimist`](#optimist)
+      - [`optimist.sync`](#optimistsync)
+      - [`optimist.update`](#optimistupdate)
+        - [Using `optimist.update`](#using-optimistupdate)
+      - [`optimist.getState`](#optimistgetstate)
+      - [`optimist.onUpdate`](#optimistonupdate)
+  - [FAQ](#faq)
+  - [License](#license)
 
 ### `useOptimisticUpdate`
 
@@ -78,7 +86,10 @@ or
 ```jsx
 import { useOptimisticUpdate } from 'use-optimistic-update';
 
-const { value, onUpdate, isUpdating } = useOptimisticUpdate(stateKey, realValue);
+const { value, onUpdate, isUpdating } = useOptimisticUpdate(
+  stateKey,
+  realValue,
+);
 ```
 
 Options
@@ -94,12 +105,16 @@ Returns
 
   - The optimistic value
 
+<!-- markdownlint-disable line-length -->
+
 - ```ts
   onUpdate: (
     updater: () => Promise<void>,
-    newValue: string | number | boolean | undefined
-  ) => Promise<void>
+    newValue: string | number | boolean | undefined,
+  ) => Promise<void>;
   ```
+
+  <!-- markdownlint-enable line-length -->
 
   - Updater function that should be called when you want to update **real** and **optimistic**
     values
@@ -200,7 +215,7 @@ optimist.update(
   async () => {
     await incrementCounter();
   },
-  counter + 1
+  counter + 1,
 );
 ```
 

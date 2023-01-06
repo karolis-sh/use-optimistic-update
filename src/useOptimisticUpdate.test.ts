@@ -2,12 +2,15 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useOptimisticUpdate from './useOptimisticUpdate';
 
-const sleep = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 20));
+const sleep = (): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, 20));
 
 it('should sync value without update', () => {
   let initialValue = 1;
 
-  const { result, rerender } = renderHook(() => useOptimisticUpdate('test', initialValue));
+  const { result, rerender } = renderHook(() =>
+    useOptimisticUpdate('test', initialValue),
+  );
 
   expect(result.current.value).toBe(1);
 
@@ -20,7 +23,9 @@ it('should sync value without update', () => {
 it('should update', async () => {
   let initialValue = 1;
 
-  const { result } = renderHook(() => useOptimisticUpdate('test-2', initialValue));
+  const { result } = renderHook(() =>
+    useOptimisticUpdate('test-2', initialValue),
+  );
 
   expect(result.current.value).toBe(1);
   expect(result.current.isUpdating).toBeFalsy();
@@ -29,7 +34,7 @@ it('should update', async () => {
     result.current.onUpdate(async () => {
       await sleep();
       initialValue += 1;
-    }, (result.current.value as number) + 1)
+    }, (result.current.value as number) + 1),
   );
 
   expect(result.current.value).toBe(2);
@@ -38,7 +43,7 @@ it('should update', async () => {
   await act(() =>
     result.current.onUpdate(async () => {
       await sleep();
-    }, (result.current.value as number) + 1)
+    }, (result.current.value as number) + 1),
   );
 
   expect(result.current.value).toBe(2);
@@ -49,7 +54,9 @@ it('should update with changed key', async () => {
   let key = 'test-2';
   let initialValue = 1;
 
-  const { result, rerender } = renderHook(() => useOptimisticUpdate(key, initialValue));
+  const { result, rerender } = renderHook(() =>
+    useOptimisticUpdate(key, initialValue),
+  );
 
   expect(result.current.value).toBe(1);
   expect(result.current.isUpdating).toBeFalsy();
@@ -58,7 +65,7 @@ it('should update with changed key', async () => {
     result.current.onUpdate(async () => {
       await sleep();
       initialValue += 1;
-    }, (result.current.value as number) + 1)
+    }, (result.current.value as number) + 1),
   );
 
   key = 'test-2-b';

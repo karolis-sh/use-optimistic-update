@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { State, StateKey } from './types';
 import { optimist } from './optimist';
+import { State, StateKey } from './types';
 
 export default (key: StateKey): State => {
   const mounted = useRef(true);

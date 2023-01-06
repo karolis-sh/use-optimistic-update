@@ -1,21 +1,18 @@
 {
-  "extends": ["@k.sh/eslint-config"],
-  "env": {
-    "browser": true
-  },
-  "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": ["*.config.js", "docs/**/*.test.js"] }
-    ]
-  },
+  "extends": [
+    "plugin:@k.sh/typescript",
+    "plugin:@k.sh/react",
+    "plugin:@k.sh/jest",
+    "plugin:@k.sh/prettier"
+  ],
   "overrides": [
     {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "extends": ["@k.sh/eslint-config/typescript"],
-      "rules": {
-        "react/prop-types": 0
-      }
+      "files": ["./*.js", "./.*.js"],
+      "extends": [
+        "plugin:@k.sh/esnext",
+        "plugin:@k.sh/node",
+        "plugin:@k.sh/prettier"
+      ]
     }
   ]
 }
